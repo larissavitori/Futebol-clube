@@ -7,16 +7,16 @@ export default class teamModel {
 
 
   async findById(id: ITeam['id']): Promise<ITeam | null> {
-    const dbData = await this.model.findByPk(id);
-    if (dbData == null) return null;
+    const result = await this.model.findByPk(id);
+    if (result == null) return null;
 
-    const { team_name } = dbData;
+    const { team_name } = result;
     return {  id, teamName:team_name  };
   }
 
   async findAll(): Promise<ITeam[]> {
-    const dbData = await this.model.findAll();
-    return dbData.map(({ id, team_name }) => (
+    const result = await this.model.findAll();
+    return result.map(({ id, team_name }) => (
       { id, teamName:team_name }
     ));
   }
