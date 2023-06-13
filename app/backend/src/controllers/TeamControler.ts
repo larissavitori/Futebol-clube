@@ -17,9 +17,9 @@ export default class teamController {
 
     const serviceResponse = await this.TeamServices.getteamById(Number(id));
 
-    /*  if (serviceResponse.status !== 'SUCCESSFUL') {
-        return res.status((ServiceResponse.status)).json(serviceResponse.messager);
-      } */
+    if (serviceResponse.status !== 'SUCCESSFUL') {
+      return res.status(400).json(serviceResponse.messager);
+    }
 
     res.status(200).json(serviceResponse.messager);
   }
