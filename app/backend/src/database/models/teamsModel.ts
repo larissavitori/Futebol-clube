@@ -5,17 +5,18 @@ export default {
     await queryInterface.bulkInsert('teams', [
       {
         id: 1,
-        team_name: 'Avaí/Kindermann',
+        teamName: 'Avaí/Kindermann',
       },
       {
         id: 2,
-        team_name: 'Bahia',
+        teamName: 'Bahia',
       },
       {
         id: 3,
-        team_name: 'Botafogo',
+        teamName: 'Botafogo',
       },
-    ], {});
+    ], {
+    });
   },
 
   down: async (queryInterface: QueryInterface) => {
