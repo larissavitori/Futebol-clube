@@ -1,5 +1,5 @@
 import * as express from 'express';
-
+import router from './router/index';
 class App {
   public app: express.Express;
 
@@ -7,11 +7,14 @@ class App {
     this.app = express();
 
     this.config();
-
+    this.router();
     // Não remover essa rota
     this.app.get('/', (req, res) => res.json({ ok: true }));
-  }
 
+  }
+  private router(): void {
+    this.app.use(router);
+  }
   private config():void {
     const accessControl: express.RequestHandler = (_req, res, next) => {
       res.header('Access-Control-Allow-Origin', '*');
