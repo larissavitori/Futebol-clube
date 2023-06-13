@@ -1,10 +1,9 @@
-
 import { ITeam } from '../Interfaces/team/Iteam';
 import { ITemModel } from '../Interfaces/team/ITeamModel';
 // import teamsModel from '../database/models/teamsModel';
-import { ServiceResponse } from '../Interfaces/ServiceResponse'; 
+import { ServiceResponse } from '../Interfaces/ServiceResponse';
 
-export default class TeamService { 
+export default class TeamService {
   constructor(
     private TeamsModel: ITemModel,
   ) { }

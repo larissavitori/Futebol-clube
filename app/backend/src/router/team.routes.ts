@@ -1,16 +1,15 @@
 import { Request, Router, Response } from 'express';
-import teamController from '../controllers/teamControler';
-import teamService from '../service/TeamService';
-import teamModel from '../models/teamsModel';
+import TeamController from '../controllers/TeamControler';
+import TeamService from '../service/TeamService';
+import TeamModel from '../models/TeamsModel';
 
-const teamsModel = new teamModel();
-const service = new teamService(teamsModel);
-const teamsController = new teamController(service);
+const teamsModel = new TeamModel();
+const service = new TeamService(teamsModel);
+const teamsController = new TeamController(service);
 
 const router = Router();
 
-
-router.get('/', (req: Request, res: Response) => teamsController.getAllBooks (req, res));
-router.get('/:id', (req: Request, res: Response) => teamsController.getBookById(req, res));
+router.get('/', (req: Request, res: Response) => teamsController.getAllteams(req, res));
+router.get('/:id', (req: Request, res: Response) => teamsController.getteamsById(req, res));
 
 export default router;
