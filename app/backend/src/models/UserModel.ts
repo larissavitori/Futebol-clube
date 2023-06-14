@@ -1,4 +1,3 @@
-// import { NewEntity } from '../Interfaces/user';
 import SequelizeUser from '../database/models/usersModel';
 import { IUser } from '../Interfaces/user/IUser';
 import { IUserModel } from '../Interfaces/user/IUserModel';

@@ -6,7 +6,7 @@ import chaiHttp = require('chai-http');
 
 import { app } from '../app';
 import { user, emailInvalid, senhaInvalida,
- userRegistrado, 
+ userRegistrado, role,
  loginValido} from './mock/user.mock';
 import JWT from '../../src/middlewares/JWT';
 import Validations from '../../src/middlewares/validLogin';
@@ -80,6 +80,15 @@ describe('Login Test', function() {
     expect(status).to.equal(401);
     expect(body.message).to.equal('Invalid email or password');
   });
+ /*  it('testa se retorna um role', async function() {
+  
+    const { status, body } = await chai.request(app)
+    .get('/login/role')
+    .set('authorization', 'token')
+    .send(role);
 
+    expect(status).to.equal(200);
+    expect(body.message).to.equal(role);
+  }); */
   afterEach(sinon.restore);
 });
