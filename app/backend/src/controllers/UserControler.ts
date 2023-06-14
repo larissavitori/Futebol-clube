@@ -15,4 +15,9 @@ export default class UserController {
     }
     return res.status(200).json(serviceResponse.messager);
   }
+
+  static findAllRole(req: Request, res: Response) {
+    const rol = req.body.validToken.role;
+    res.status(200).json({ role: rol });
+  }
 }

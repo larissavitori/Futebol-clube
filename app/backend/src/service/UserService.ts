@@ -18,8 +18,8 @@ export default class UserService {
       if (!bcrypt.compareSync(data.password, user.password)) {
         return { status: 'UNAUTHORIZED', messager: { message: 'Invalid email or password' } };
       }
-      const { email } = user as IUser;
-      const token = this.jwtService.sign({ email });
+      const { email, role } = user as IUser;
+      const token = this.jwtService.sign({ email, role });
       return { status: 'SUCCESSFUL', messager: { token } };
     }
     return { status: 'UNAUTHORIZED', messager: { message: 'Invalid email or password' } };

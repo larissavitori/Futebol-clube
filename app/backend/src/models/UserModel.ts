@@ -9,13 +9,14 @@ export default class UsersModel implements IUserModel {
   async findByEmail(email: IUser['email']): Promise<IUser | null> {
     const user = await this.model.findOne({ where: { email } });
     if (!user) return null;
-    const { id, password, username } = user;
-    return { id, email, password, username };
+    const { id, password, username, role } = user;
+    return { id, email, password, username, role };
   }
 
-  async create(): Promise<IUser> {
-    const user = await this.model.create();
-    const { id, email, password, username } = user;
-    return { id, email, password, username };
+  async findAll(): Promise<IUser[]> {
+    const dbData = await this.model.findAll();
+    return dbData.map(({ email, password, id, username, role }) => (
+      { email, password, id, username, role }
+    ));
   }
 }

@@ -31,9 +31,11 @@ class ValidLogin {
       return res.status(401).json({ message: 'Token not found' });
     }
     const validToken = await JWT.verify(token);
+
     if (validToken === 'Token must be a valid token') {
       return res.status(401).json({ message: 'Token must be a valid token' });
     }
+    req.body = { ...req.body, validToken };
     next();
   }
 }

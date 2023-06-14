@@ -8,7 +8,8 @@ export interface ILogin {
 
 // usuário completo
 export interface IUser extends Identifiable, ILogin {
-  username: string
+  username: string,
+  role: string,
 }
 
 // usuário a ser retornado pela API
