@@ -1,13 +1,14 @@
 import { ID } from '../user';
 import { IMatche } from './IMatche';
 
-export interface IMathcheModel extends ICRUDModelUpdater<IMatche>{
+export interface IMathcheModel extends ICRUDModelUpdater{
   findAll(): Promise<IMatche[]>,
   findByQuery(q: string): Promise<IMatche[]>,
+  findById(id: number, homeTeamGoals: number, awayTeamGoals:number): Promise<object>,
 }
 
-export interface ICRUDModelUpdater<T> {
-  update(id: ID): Promise<T | null>,
+export interface ICRUDModelUpdater {
+  update(id: ID): Promise<number>,
 }
 
-export type ICRUDModel<T> = ICRUDModelUpdater<T>;
+export type ICRUDModel = ICRUDModelUpdater;

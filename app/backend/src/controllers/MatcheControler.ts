@@ -23,20 +23,17 @@ export default class MatchController {
     res.status(200).json(serviceProgress.messager);
   }
 
-  /*   public async getMatchById(req: Request, res: Response) {
+  public async getMatchById(req: Request, res: Response) {
     const { id } = req.params;
+    const { homeTeamGoals, awayTeamGoals } = req.body;
 
-    const serviceResponse = await this.MatchServices.getMatchById(Number(id));
-
-    if (serviceResponse.status !== 'SUCCESSFUL') {
-      return res.status(mapStatusHTTP(serviceResponse.status)).json(serviceResponse.messager);
-    }
-
-    res.status(200).json(serviceResponse.messager);
+    const serviceResponse = await
+    this.MatchServices.getMatchById(+id, homeTeamGoals, awayTeamGoals);
+    res.status(200).json(serviceResponse);
   }
- */
+
   public async update(req: Request, res: Response): Promise<Response> {
-    const id = Number(req.params.id);
+    const id = +(req.params.id);
     const serviceResponse = await this.MatchServices.update(id);
     return res.status(200).json(serviceResponse);
   }

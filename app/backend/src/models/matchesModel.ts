@@ -43,20 +43,20 @@ export default class matcheModel {
     });
   }
 
-  async findById(id: IMatche['id']): Promise<IMatche | null> {
-    const dbData = await this.model.findByPk(id);
-    if (dbData == null) return null;
-
-    return dbData;
+  async findById(
+    id: IMatche['id'],
+    homeTeamGoals: number,
+    awayTeamGoals: number,
+  ): Promise<object> {
+    await this.model.update({ homeTeamGoals, awayTeamGoals }, { where: { id } });
+    return { homeTeamGoals, awayTeamGoals };
   }
 
-  async update(id: IMatche['id']): Promise<IMatche | null> {
+  async update(id: IMatche['id']): Promise<number> {
     const [affectedRows] = await this.model.update(
       { inProgress: false },
       { where: { id } },
     );
-    if (affectedRows === 0) return null;
-
-    return this.findById(id);
+    return affectedRows;
   }
 }
