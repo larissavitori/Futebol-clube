@@ -1,3 +1,4 @@
+// import { NewEntity } from '../Interfaces/user';
 import { IMatche } from '../Interfaces/matches/IMatche';
 import { IMathcheModel } from '../Interfaces/matches/IMatchModel';
 import { ServiceResponse } from '../Interfaces/ServiceResponse';
@@ -30,5 +31,10 @@ export default class MatchService {
   public async update(id: number): Promise<object> {
     await this.MatchModel.update(id);
     return { messager: 'Finished' };
+  }
+
+  public async createMach(book: IMatche): Promise<ServiceResponse<object>> {
+    const newBook = await this.MatchModel.create(book);
+    return { status: 'SUCCESSFUL', messager: newBook };
   }
 }

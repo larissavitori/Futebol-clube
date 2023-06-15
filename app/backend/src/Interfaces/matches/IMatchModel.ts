@@ -5,6 +5,7 @@ export interface IMathcheModel extends ICRUDModelUpdater{
   findAll(): Promise<IMatche[]>,
   findByQuery(q: string): Promise<IMatche[]>,
   findById(id: number, homeTeamGoals: number, awayTeamGoals:number): Promise<object>,
+  create(data: IMatche): Promise<IMatche>,
 }
 
 export interface ICRUDModelUpdater {

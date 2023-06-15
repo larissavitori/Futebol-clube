@@ -40,4 +40,5 @@ describe('testando a rota teams', () => {
     expect(status).to.equal(400);
     expect(body.message).to.equal('team 1 not found');
   });
+  afterEach(sinon.restore);
 });

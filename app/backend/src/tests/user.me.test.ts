@@ -80,8 +80,10 @@ describe('Login Test', function() {
     expect(status).to.equal(401);
     expect(body.message).to.equal('Invalid email or password');
   });
- /*  it('testa se retorna um role', async function() {
-  
+   /* it('testa se retorna um role', async function() {
+    sinon.stub(JWT, 'verify').returns('validToken');
+    sinon.stub(Validations, 'validateLogin').returns();
+    
     const { status, body } = await chai.request(app)
     .get('/login/role')
     .set('authorization', 'token')

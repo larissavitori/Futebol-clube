@@ -10,6 +10,11 @@ const MatchesController = new MatchController(service);
 
 const router = Router();
 
+router.post(
+  '/',
+  ValidLogin.validateToken,
+  (req: Request, res: Response) => MatchesController.createMatch(req, res),
+);
 router.get('/', (req: Request, res: Response) => MatchesController.getAllMatch(req, res));
 router.patch(
   '/:id/finish',

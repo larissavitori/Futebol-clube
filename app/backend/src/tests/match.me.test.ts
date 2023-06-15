@@ -20,12 +20,13 @@ describe('testando a rota macth', () => {
     expect(status).to.equal(200);
     expect(body).to.deep.equal(resultMatch);
   });
-/*   it('all match True', async function() {
-     sinon.stub(SequelizeMatch, 'getTableName').resolves(inprogressTrue);
+  it('all match True', async function() {
+     sinon.stub(SequelizeMatch, 'findAll').resolves(inprogressTrue as any);
 
     const { status, body } = await chai.request(app).get('/matches?inProgress=true');
 
     expect(status).to.equal(200);
     expect(body).to.deep.equal(inprogressTrue);
-  }); */
+  });
+  afterEach(sinon.restore);
 });

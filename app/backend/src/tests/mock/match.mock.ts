@@ -9,7 +9,7 @@ const resultMatch =  {
       "teamName": "São Paulo"
     },
 }
-const inprogressTrue =   {
+const inprogressTrue =[ {
   "id": 41,
   "homeTeamId": 16,
   "homeTeamGoals": 2,
@@ -22,7 +22,7 @@ const inprogressTrue =   {
   "awayTeam": {
     "teamName": "Internacional"
   }
-}
+}]
 
 export {
     resultMatch,

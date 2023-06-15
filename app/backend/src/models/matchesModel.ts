@@ -59,4 +59,9 @@ export default class matcheModel {
     );
     return affectedRows;
   }
+
+  async create(data:IMatche): Promise<IMatche> {
+    const dbData = await this.model.create({ ...data, inProgress: true });
+    return dbData;
+  }
 }
