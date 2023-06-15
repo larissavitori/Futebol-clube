@@ -40,6 +40,9 @@ export default class MatchController {
 
   public async createMatch(req: Request, res: Response) {
     const serviceResponse = await this.MatchServices.createMach(req.body);
+    if (serviceResponse.status === 'NOT_FOUND') {
+      return res.status(404).json(serviceResponse.messager);
+    }
     res.status(201).json(serviceResponse.messager);
   }
 }

@@ -3,6 +3,7 @@ import MatchController from '../controllers/MatcheControler';
 import MatchService from '../service/matchService';
 import MatchesModel from '../models/matchesModel';
 import ValidLogin from '../middlewares/validLogin';
+import ValidMatches from '../middlewares/validMatches';
 
 const MatchModel = new MatchesModel();
 const service = new MatchService(MatchModel);
@@ -13,6 +14,7 @@ const router = Router();
 router.post(
   '/',
   ValidLogin.validateToken,
+  ValidMatches.validateCampos,
   (req: Request, res: Response) => MatchesController.createMatch(req, res),
 );
 router.get('/', (req: Request, res: Response) => MatchesController.getAllMatch(req, res));
