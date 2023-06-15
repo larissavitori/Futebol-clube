@@ -42,4 +42,21 @@ export default class matcheModel {
       ],
     });
   }
+
+  async findById(id: IMatche['id']): Promise<IMatche | null> {
+    const dbData = await this.model.findByPk(id);
+    if (dbData == null) return null;
+
+    return dbData;
+  }
+
+  async update(id: IMatche['id']): Promise<IMatche | null> {
+    const [affectedRows] = await this.model.update(
+      { inProgress: false },
+      { where: { id } },
+    );
+    if (affectedRows === 0) return null;
+
+    return this.findById(id);
+  }
 }

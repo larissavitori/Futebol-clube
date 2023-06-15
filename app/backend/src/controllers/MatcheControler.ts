@@ -23,12 +23,21 @@ export default class MatchController {
     res.status(200).json(serviceProgress.messager);
   }
 
-/*   public async getBookByQuery(req: Request, res: Response) {
-    const progress = req.query.inProgress;
-    const serviceResponse = await this.MatchServices.getByQuery(progress as unknown as boolean);
+  /*   public async getMatchById(req: Request, res: Response) {
+    const { id } = req.params;
+
+    const serviceResponse = await this.MatchServices.getMatchById(Number(id));
+
     if (serviceResponse.status !== 'SUCCESSFUL') {
       return res.status(mapStatusHTTP(serviceResponse.status)).json(serviceResponse.messager);
     }
+
     res.status(200).json(serviceResponse.messager);
-  } */
+  }
+ */
+  public async update(req: Request, res: Response): Promise<Response> {
+    const id = Number(req.params.id);
+    const serviceResponse = await this.MatchServices.update(id);
+    return res.status(200).json(serviceResponse);
+  }
 }

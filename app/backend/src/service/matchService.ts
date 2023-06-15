@@ -17,4 +17,16 @@ export default class MatchService {
     const match = await this.MatchModel.findByQuery(q);
     return { status: 'SUCCESSFUL', messager: match };
   }
+
+  /*   public async getMatchById(id: number): Promise<ServiceResponse<IMatche>> {
+    const match = await this.MatchModel.findById(id);
+    if (!match) return { status: 'NOT_FOUND', messager: { message: `Book ${id} not found` } };
+    return { status: 'SUCCESSFUL', messager: match };
+  } */
+
+  public async update(id: number): Promise<object> {
+    await this.MatchModel.update(id);
+
+    return { messager: 'Finished' };
+  }
 }
