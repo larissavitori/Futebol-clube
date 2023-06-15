@@ -1,3 +1,4 @@
+// import { Op } from 'sequelize';
 import SequelizeMatches from '../database/models/matchesModel';
 import { IMatche } from '../Interfaces/matches/IMatche';
 import TeamModel from '../database/models/teamsModel';
@@ -23,5 +24,22 @@ export default class matcheModel {
       },
     );
     return dbData;
+  }
+
+  async findByQuery(q: string): Promise<IMatche[]> {
+    const progress = q === 'true';
+    return this.model.findAll({
+      where: { inProgress: progress },
+      include: [{ model: TeamModel,
+        as: 'homeTeam',
+        attributes: ['teamName'] }, {
+        model: TeamModel,
+        as: 'awayTeam',
+        attributes: [
+          'teamName',
+        ],
+      },
+      ],
+    });
   }
 }
