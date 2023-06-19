@@ -14,6 +14,7 @@ import Validations from '../../src/middlewares/validLogin';
 // @ts-ignore
 
 import SequelizeUser from '../../src/database/models/usersModel';
+import { token } from './mock/match.mock';
 
 chai.use(chaiHttp);
 
@@ -60,6 +61,7 @@ describe('Login Test', function() {
     sinon.stub(JWT, 'sign').returns('validToken');
     sinon.stub(Validations, 'validateCampos').returns();
 
+
     const { status, body } = await chai.request(app)
       .post('/login')
       .send(loginValido);
@@ -80,17 +82,5 @@ describe('Login Test', function() {
     expect(status).to.equal(401);
     expect(body.message).to.equal('Invalid email or password');
   });
-   /* it('testa se retorna um role', async function() {
-    sinon.stub(JWT, 'verify').returns('validToken');
-    sinon.stub(Validations, 'validateLogin').returns();
-    
-    const { status, body } = await chai.request(app)
-    .get('/login/role')
-    .set('authorization', 'token')
-    .send(role);
-
-    expect(status).to.equal(200);
-    expect(body.message).to.equal(role);
-  }); */
   afterEach(sinon.restore);
 });

@@ -35,7 +35,7 @@ export default class MatchController {
   public async update(req: Request, res: Response): Promise<Response> {
     const id = +(req.params.id);
     const serviceResponse = await this.MatchServices.update(id);
-    return res.status(200).json(serviceResponse);
+    return res.status(200).json(serviceResponse.messager);
   }
 
   public async createMatch(req: Request, res: Response) {
